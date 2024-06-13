@@ -1,22 +1,25 @@
 ---
+import { SITE } from '../components/data_files/constants'
+import Meta from '../components/Meta.astro'
+
+// Interface to type-check the properties
 interface Props {
-	title: string
+	title?: string
+	meta?: string
+	structuredData?: object
+	lang?: string
 }
 
-const { title } = Astro.props
+// Setting expected props
+const { title = SITE.title, meta, structuredData, lang = 'en' } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="description"
-			content="Join Famdesc to build your family tree, share cherished memories and preserve the moments that matter most. Connect with loved ones in your digital space dedicated to family moments."
-		/>
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<!-- Adding metadata to the HTML document -->
+		<Meta meta={meta} structuredData={structuredData} />
+		<!-- Define the title of the page -->
 		<title class="">{title}</title>
 		<script is:inline>
 			// Script to handle dark mode. It will check if the theme is stored in localStorage or if dark theme is preferred by system settings
@@ -32,34 +35,34 @@ const { title } = Astro.props
 	</head>
 	<body class="bg-neutral-200 selection:bg-blue-400 selection:text-neutral-700 dark:bg-neutral-800">
 		<slot />
+		<style is:global>
+			:root {
+				--accent: 136, 58, 234;
+				--accent-light: 224, 204, 250;
+				--accent-dark: 49, 10, 101;
+				--accent-gradient: linear-gradient(
+					45deg,
+					rgb(var(--accent)),
+					rgb(var(--accent-light)) 30%,
+					white 60%
+				);
+			}
+			html {
+				font-family: system-ui, sans-serif;
+				background: #13151a;
+				background-size: 224px;
+			}
+			code {
+				font-family:
+					Menlo,
+					Monaco,
+					Lucida Console,
+					Liberation Mono,
+					DejaVu Sans Mono,
+					Bitstream Vera Sans Mono,
+					Courier New,
+					monospace;
+			}
+		</style>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
