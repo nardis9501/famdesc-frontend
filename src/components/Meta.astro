@@ -107,6 +107,9 @@ const appleTouchIcon = await getImage({
 <meta name="twitter:description" content={ogDescription} />
 <meta name="twitter:image" content={socialImage} />
 
+<!-- https://docs.astro.build/en/guides/integrations-guide/sitemap/ -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+
 <!-- Links for favicons -->
 <link href="/favicon.ico" rel="icon" sizes="any" type="image/x-icon" />
 <link href={faviconSvg.src} rel="icon" type="image/svg+xml" sizes="any" />
