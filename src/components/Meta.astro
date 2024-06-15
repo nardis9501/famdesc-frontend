@@ -1,8 +1,8 @@
 ---
 import { getImage } from 'astro:assets'
-import { OG, SEO, SITE } from './data_files/constants'
-import faviconSvgSrc from './images/favicon.svg'
-import faviconSrc from './images/icon.png'
+import { OG, SEO, SITE } from '@components/data_files/constants'
+import faviconSvgSrc from '@components/images/favicon.svg'
+import faviconSrc from '@components/images/icon.png'
 
 // Default properties for the Meta component. These values are used if props are not provided.
 // 'meta' sets a default description meta tag to describe the page content.
@@ -107,6 +107,8 @@ const appleTouchIcon = await getImage({
 <meta name="twitter:description" content={ogDescription} />
 <meta name="twitter:image" content={socialImage} />
 
+<!-- Links to the webmanifest and sitemap -->
+<link rel="manifest" href="/manifest.json" />
 <!-- https://docs.astro.build/en/guides/integrations-guide/sitemap/ -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
