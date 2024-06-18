@@ -2,7 +2,7 @@
 import ThemeIcon from '@components/ThemeIcon.astro'
 import NavLink from '@components/ui/links/NavLink.astro'
 import enStrings from '@utils/navigation.ts'
-import esStrings from '@/utils/es/navigation.ts'
+import esStrings from '@/utils/es/navigation'
 import BrandLogo from '@components/BrandLogo.astro'
 import LanguagePicker from '@components/ui/LanguagePicker.astro'
 
@@ -23,6 +23,7 @@ const homeUrl = Astro.currentLocale === 'es' ? '/es' : '/'
 				href={homeUrl}
 				aria-label="Brand"
 			>
+				<BrandLogo class="h-auto w-14 py-3" />
 			</a>
 			<div class="ml-auto mr-5 md:hidden">
 				<button
