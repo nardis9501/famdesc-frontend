@@ -76,8 +76,10 @@ const homeUrl = Astro.currentLocale === 'es' ? '/es' : '/'
 				class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 md:gap-y-0 md:ps-7 lg:gap-x-7"
 			>
 				{strings.navBarLinks.map((link) => <NavLink url={link.url} name={link.name} />)}
-
-				<span class="hidden md:inline-block"> </span>
+				<LanguagePicker />
+				<span class="hidden md:inline-block">
+					<ThemeIcon />
+				</span>
 			</div>
 		</div>
 	</nav>
